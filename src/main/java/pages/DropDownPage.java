@@ -15,21 +15,22 @@ public class DropDownPage {
     public DropDownPage(WebDriver driver){
     this.driver=driver;
     }
+    private Select findDropDownElement(){
+        return new Select(driver.findElement(dropDown));
+    }
 //    public void selectFromDropDown(String option){
 //        Select dropDownElement = new Select(driver.findElement(dropDown));
 //        dropDownElement.selectByVisibleText(option);
 //    }
         public void selectFromDropDown(String option){
-       findDropDown().selectByVisibleText(option);
+       findDropDownElement().selectByVisibleText(option);
     }
 
     public List<String> getSelectedOptions(){
-        List<WebElement> selectedElements = findDropDown().getAllSelectedOptions();
+        List<WebElement> selectedElements = findDropDownElement().getAllSelectedOptions();
         return selectedElements.stream().map(e->e.getText()).collect(Collectors.toList());
     }
-    private Select findDropDown(){
-        return new Select(driver.findElement(dropDown));
-    }
+
     /*
 
      */
