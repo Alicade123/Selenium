@@ -22,6 +22,7 @@ public class BaseTests {
         //Interface WebDriver /ChromeDriver, ChromiumDriver, EdgeDriver, FirefoxDriver, InternetExplorerDriver, RemoteWebDriver, SafariDriver
         driver = new ChromeDriver(); //any interaction happen in testing is made using this webdriver
         driver.get("https://the-internet.herokuapp.com/");
+        //Form Testing page:https://formy-project.herokuapp.com/form
 
         homePage = new HomePage(driver);
 

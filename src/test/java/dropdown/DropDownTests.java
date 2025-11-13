@@ -1,7 +1,8 @@
 package dropdown;
 
 import base.BaseTests;
-import org.testng.Assert;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
 
 public class DropDownTests extends BaseTests {
@@ -11,9 +12,9 @@ public class DropDownTests extends BaseTests {
         var dropDownPage = homePage.ClickDropDown();
         String option = "Option 1";
         dropDownPage.selectFromDropDown(option);
-        var selectedOption = dropDownPage.getSelectedOptions();
-        Assert.assertEquals(selectedOption.size(), 1);
-        Assert.assertTrue(selectedOption.contains(option), "Option 1 is not selected");
+        var selectedOptions = dropDownPage.getSelectedOptions();
+       assertEquals(selectedOptions.size(), 1,"Incorrect number of selected options");
+       assertTrue(selectedOptions.contains(option), "Option 1 is not selected");
 
     }
 
