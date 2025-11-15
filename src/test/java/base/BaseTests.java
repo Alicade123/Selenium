@@ -32,7 +32,7 @@ public class BaseTests {
     }
     @AfterClass
     public void tearDown(){
-        driver.quit();  //closes all the driver's session
+        //driver.quit();  //closes all the driver's session
         //driver.close(); //closes only the current tab (window)
     }
 }
