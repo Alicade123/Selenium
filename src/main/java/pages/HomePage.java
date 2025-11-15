@@ -26,12 +26,29 @@ public class HomePage {
         clickLink("Forgot Password");
         return new ForgotPassword(driver);
     }
-    //3.Click Hovers
+    //4.Click Hovers
     public HoversPage clickHovers(){
     clickLink("Hovers");
     return new HoversPage(driver);
     }
+    //5.Click KeyPressesPage
+    public KeyPressesPage clickKeyPresses(){
+        clickLink("Key Presses");
+        return new KeyPressesPage(driver);
+    }
 
+    //6. Click HorizontalSlider
+    public HorizontalSlider clickHorizontalSlider(){
+        clickLink("Horizontal Slider");
+        return new HorizontalSlider(driver);
+    }
+    //7. Click JavaScriptAlerts
+    public JavaScriptAlertsPage clickJavaScriptAlerts(){
+        clickLink("JavaScript Alerts");
+        return new JavaScriptAlertsPage(driver);
+
+    }
+    /* */
 
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
