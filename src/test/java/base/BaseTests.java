@@ -3,6 +3,7 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
@@ -22,6 +23,7 @@ public class BaseTests {
         //Interface WebDriver /ChromeDriver, ChromiumDriver, EdgeDriver, FirefoxDriver, InternetExplorerDriver, RemoteWebDriver, SafariDriver
         driver = new ChromeDriver(); //any interaction happen in testing is made using this webdriver
         driver.get("https://the-internet.herokuapp.com/");
+//        goHome(); // to make sure that you run different test cases in whole class alerts using single object.
         //Form Testing page:https://formy-project.herokuapp.com/form
 
         homePage = new HomePage(driver);
@@ -30,6 +32,10 @@ public class BaseTests {
         driver.manage().window().maximize();
         System.out.println(driver.getTitle());
     }
+//    @AfterMethod
+//    public void goHome(){
+//        driver.get("https://the-internet.herokuapp.com/");
+//    }
     @AfterClass
     public void tearDown(){
         //driver.quit();  //closes all the driver's session
