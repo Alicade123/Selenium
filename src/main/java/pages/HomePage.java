@@ -46,9 +46,24 @@ public class HomePage {
     public JavaScriptAlertsPage clickJavaScriptAlerts(){
         clickLink("JavaScript Alerts");
         return new JavaScriptAlertsPage(driver);
-
     }
-    /* */
+
+    //8. Click ContextMenuPage
+    public ContextMenuPage clickContextMenuLink(){
+        clickLink("Context Menu");
+        return new ContextMenuPage(driver);
+    }
+
+    //9. Click ContextMenuPage
+    public FileUploadPage  clickFileUploadPage(){
+        clickLink("File Upload");
+        return new FileUploadPage(driver);
+    }
+
+    /*
+
+
+    * */
 
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
