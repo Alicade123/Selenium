@@ -17,9 +17,10 @@ public class NestedFramesPage {
     public void SwitchToMainFrame(){
         driver.switchTo().defaultContent();
     }
-    public void getLeftFrameText(){
+    public String getLeftFrameText(){
         SwitchToLeftFrame();
         SwitchToMainFrame();
+        return "";
 
     }
     public String getBottomFrameText(){
