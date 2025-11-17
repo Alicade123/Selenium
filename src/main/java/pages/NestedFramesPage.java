@@ -22,9 +22,10 @@ public class NestedFramesPage {
         SwitchToMainFrame();
 
     }
-    public void getBottomFrameText(){
+    public String getBottomFrameText(){
         SwitchToLeftFrame();
         SwitchToMainFrame();
+        return "";
     }
 
     /*
