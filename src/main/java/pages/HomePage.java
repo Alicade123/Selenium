@@ -60,6 +60,17 @@ public class HomePage {
         return new FileUploadPage(driver);
     }
 
+    //10. Click EntryAd Link
+    public EntryAdPage clickEntryAdPage(){
+        clickLink("Entry Ad");
+        return new EntryAdPage(driver);
+    }
+
+    //11. Click  WYSIWYG Editor Link
+    public WYSIWYGEditorPage clickWYSIWYGEditorLink(){
+        clickLink("WYSIWYG Editor");
+        return new  WYSIWYGEditorPage(driver);
+    }
     /*
 
 
