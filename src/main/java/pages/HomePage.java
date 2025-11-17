@@ -71,6 +71,12 @@ public class HomePage {
         clickLink("WYSIWYG Editor");
         return new  WYSIWYGEditorPage(driver);
     }
+
+    //12 . Click Frames => Optional Independent Exercise
+    public FramePage clickFramesLink(){
+        clickLink("Frames");
+        return new FramePage(driver);
+    }
     /*
 
 
