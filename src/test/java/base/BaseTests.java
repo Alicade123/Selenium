@@ -7,6 +7,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 
 public class BaseTests {
     //step1: Creating the new object of Webdriver
@@ -23,6 +26,7 @@ public class BaseTests {
         //Interface WebDriver /ChromeDriver, ChromiumDriver, EdgeDriver, FirefoxDriver, InternetExplorerDriver, RemoteWebDriver, SafariDriver
         driver = new ChromeDriver(); //any interaction happen in testing is made using this webdriver
         driver.get("https://the-internet.herokuapp.com/");
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 //        goHome(); // to make sure that you run different test cases in whole class alerts using single object.
         //Form Testing page:https://formy-project.herokuapp.com/form
 
