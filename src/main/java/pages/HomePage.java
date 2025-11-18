@@ -77,10 +77,13 @@ public class HomePage {
         clickLink("Frames");
         return new FramePage(driver);
     }
+    //13. click Dynamic Loading
+    public DynamicLoadingPage clickDynamicLoadingLink(){
+        clickLink("Dynamic Loading");
+        return new DynamicLoadingPage(driver);
+    }
     /*
-
-
-    * */
+     */
 
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
