@@ -27,6 +27,8 @@ public class BaseTests {
         driver = new ChromeDriver(); //any interaction happen in testing is made using this webdriver
         driver.get("https://the-internet.herokuapp.com/");
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+//        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+//        driver.manage().timeouts().SetScriptTimeout(Duration.ofSeconds(30));
 //        goHome(); // to make sure that you run different test cases in whole class alerts using single object.
         //Form Testing page:https://formy-project.herokuapp.com/form
 
