@@ -16,6 +16,14 @@ public class TimeWaiterTests extends BaseTests{
         String text = dynamicLoadingExample1Page.clickStartButton();
         assertEquals(text, "Hello World!", "Alicade messed up things");
     }
+    @Test
+    public void testClickStartLoadingButton2(){
+        var dynamicLoadingPage = homePage.clickDynamicLoadingLink();
+        var dynamicLoadingPage2 = dynamicLoadingPage.clickDynamicLoadingExample2Page();
+        String actualResult = dynamicLoadingPage2.clickStartButton();
+        assertEquals(actualResult, "Hello World!", "You don't play with programming even if is fun");
+
+    }
 
 
 }
