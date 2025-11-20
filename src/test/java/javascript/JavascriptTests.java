@@ -9,6 +9,10 @@ public class JavascriptTests extends BaseTests {
         LargeDeepDOMPage largeDeepDOMPage = homePage.clickLargeDeepDOMLink();
         largeDeepDOMPage.scrollToTable();
     }
+    @Test
+    public void javascriptScrollInfiniteTest(){
+        homePage.clickInfiniteScrollLink().scrollToParagraph(10);
+    }
 
 
 }
