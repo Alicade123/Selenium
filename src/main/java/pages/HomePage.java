@@ -94,7 +94,11 @@ public class HomePage {
         clickLink("Infinite Scroll");
         return new InfiniteScrollPage(driver);
     }
-
+    //16. Click ClickDropDown4JsExecutorUse
+    public DropDownPage4JsExecutorUse clickDropDown4JsExecutorUse(){
+        clickLink("Dropdown");
+        return new DropDownPage4JsExecutorUse(driver);
+    }
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
     }
