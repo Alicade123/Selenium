@@ -21,4 +21,6 @@ public class DynamicLoadingPage {
         return new DynamicLoadingExample2Page(driver);
     }
 
+
+
 }
