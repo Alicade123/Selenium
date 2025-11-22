@@ -22,8 +22,14 @@ public class NavigationDynamicLoadingPage {
         actions.keyDown(Keys.CONTROL).click(target).keyUp(Keys.CONTROL).perform();
       return new NewWindowDynamicLoadingExample2Page(driver);
     }
- public void switchWindow(String newTab){
-        driver.switchTo().window(newTab);
+
+ public void switchWindow(String newTabUrl){
+        var windows = driver.getWindowHandles();
+        for(String window : windows){
+
+            driver.switchTo().window(window);
+            if(newTabUrl.equals(driver.getCurrentUrl())) break;
+        }
 
  }
 
