@@ -105,6 +105,12 @@ public class HomePage {
         clickLink("Multiple Windows");
         return new MultipleWindowsPage(driver);
     }
+    //18. click Dynamic Loading link
+    public NavigationDynamicLoadingPage clickDynamicLoadingLink2(){
+        clickLink("Dynamic Loading");
+        return new NavigationDynamicLoadingPage(driver);
+
+    }
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
     }
