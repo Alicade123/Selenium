@@ -6,6 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import pages.HomePage;
+import utils.WindowManager;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -46,6 +47,9 @@ public class BaseTests {
     public void tearDown(){
         //driver.quit();  //closes all the driver's session
         //driver.close(); //closes only the current tab (window)
+    }
+    public WindowManager getWebDriver(){
+        return new WindowManager(driver);
     }
 }
 
