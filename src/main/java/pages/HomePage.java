@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WindowManager;
 
 public class HomePage {
 
@@ -98,6 +99,11 @@ public class HomePage {
     public DropDownPage4JsExecutorUse clickDropDown4JsExecutorUse(){
         clickLink("Dropdown");
         return new DropDownPage4JsExecutorUse(driver);
+    }
+    //17. Click Multiple Windows
+    public MultipleWindowsPage clickMultipleWindowsLink(){
+        clickLink("Multiple Windows");
+        return new MultipleWindowsPage(driver);
     }
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
