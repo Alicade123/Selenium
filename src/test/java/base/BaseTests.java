@@ -1,10 +1,14 @@
 package base;
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -16,12 +20,16 @@ import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.CookieStore;
 import java.nio.file.Files;
 import java.time.Duration;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
+
 public class BaseTests {
+    private static final Logger log = LoggerFactory.getLogger(BaseTests.class);
     //step1: Creating the new object of Webdriver
     private WebDriver driver;
     protected HomePage homePage;
@@ -36,7 +44,7 @@ public class BaseTests {
         //Interface WebDriver /ChromeDriver, ChromiumDriver, EdgeDriver, FirefoxDriver, InternetExplorerDriver, RemoteWebDriver, SafariDriver
 //        driver = new ChromeDriver(); //any interaction happen in testing is made using this webdriver
         // base driver
-        WebDriver baseDriver = new ChromeDriver();
+        WebDriver baseDriver = new ChromeDriver(getChromeOptions());
         // listener
         EventReporter reporter = new EventReporter();
         // decorate and assign to GLOBAL driver
@@ -53,12 +61,15 @@ public class BaseTests {
 
         //Manage the screen size of the window
         driver.manage().window().maximize();
+        setCookies();
+        deleteCookie();
         System.out.println(driver.getTitle());
     }
 //    @AfterMethod
 //    public void goHome(){
 //        driver.get("https://the-internet.herokuapp.com/");
 //    }
+    /*
       @AfterClass
     public void takeScreenShot(ITestResult result){
         if(ITestResult.FAILURE == result.getStatus()){
@@ -73,9 +84,11 @@ public class BaseTests {
             }
         }
     }
+
+     */
     @AfterClass
     public void tearDown(){
-        driver.quit();  //closes all the driver's session
+       // driver.quit();  //closes all the driver's session
         //driver.close(); //closes only the current tab (window)
     }
 
@@ -83,5 +96,30 @@ public class BaseTests {
         return new WindowManager(driver);
     }
 
+    private ChromeOptions getChromeOptions(){
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("disable-infobars");//no longer working because of the security issues
+        //chromeOptions.addArguments("--headless=new"); // modern headless mode
+        return chromeOptions;
+    }
+    private void setCookies(){
+        Cookie cookie = new Cookie.Builder("Alicade", "12345")
+                .domain("the-internet.herokuapp.com")
+                .build();
+        driver.manage().addCookie(cookie);
+        }
+    private void deleteCookie(){
+        String cookieNameToDelete = "optimizelyBuckets";
+
+       Set<Cookie> cookieSet = driver.manage().getCookies();
+        for(Cookie cookie : cookieSet){
+            System.out.println(cookie.getName());
+            if(cookie.getName().equalsIgnoreCase(cookieNameToDelete)){
+                driver.manage().deleteCookieNamed(cookieNameToDelete);
+            }
+            System.out.println(cookie.getName());
+        }
+
+    }
 }
 
