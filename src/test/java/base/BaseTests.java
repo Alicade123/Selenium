@@ -99,7 +99,7 @@ public class BaseTests {
     private ChromeOptions getChromeOptions(){
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("disable-infobars");//no longer working because of the security issues
-        //chromeOptions.addArguments("--headless=new"); // modern headless mode
+        chromeOptions.addArguments("--headless=new"); // modern headless mode
         return chromeOptions;
     }
     private void setCookies(){
@@ -117,6 +117,7 @@ public class BaseTests {
             if(cookie.getName().equalsIgnoreCase(cookieNameToDelete)){
                 driver.manage().deleteCookieNamed(cookieNameToDelete);
             }
+            System.out.println();
             System.out.println(cookie.getName());
         }
 
