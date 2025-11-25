@@ -19,7 +19,7 @@ public void testSuccessfulLogin(){
 
      String actualResult = secureArea.getAlert();
      //assertEquals(actualResult,"You logged into a secure area!","Your logged in successfully");
-     assertTrue(secureArea.getAlert().contains("You logged into a secure area!"),"Login Successful!");
+     assertTrue(secureArea.getAlert().contains("Ohh!!! You logged into a secure area!"),"Login Successful!");
 }
 
 }
