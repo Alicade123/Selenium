@@ -1,9 +1,6 @@
 package base;
 
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringDecorator;
@@ -29,7 +26,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTests {
-    private static final Logger log = LoggerFactory.getLogger(BaseTests.class);
     //step1: Creating the new object of Webdriver
     private WebDriver driver;
     protected HomePage homePage;
@@ -44,11 +40,12 @@ public class BaseTests {
         //Interface WebDriver /ChromeDriver, ChromiumDriver, EdgeDriver, FirefoxDriver, InternetExplorerDriver, RemoteWebDriver, SafariDriver
 //        driver = new ChromeDriver(); //any interaction happen in testing is made using this webdriver
         // base driver
-        WebDriver baseDriver = new ChromeDriver(getChromeOptions());
+        driver = new ChromeDriver();
+//        WebDriver baseDriver = new ChromeDriver(getChromeOptions());
         // listener
         EventReporter reporter = new EventReporter();
         // decorate and assign to GLOBAL driver
-        driver = new EventFiringDecorator(reporter).decorate(baseDriver);
+//        driver = new EventFiringDecorator(reporter).decorate(baseDriver);
         driver.get("https://the-internet.herokuapp.com/");
 
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -69,23 +66,24 @@ public class BaseTests {
 //    public void goHome(){
 //        driver.get("https://the-internet.herokuapp.com/");
 //    }
-    /*
-      @AfterClass
-    public void takeScreenShot(ITestResult result){
+
+      @AfterMethod
+    public void takeScreenShot(ITestResult result) throws IOException {
+          var camera = (TakesScreenshot)driver;
+          File screenShoot = camera.getScreenshotAs(OutputType.FILE);
+          System.out.println("The absolute path of the screenshot is: " +screenShoot.getAbsolutePath());
         if(ITestResult.FAILURE == result.getStatus()){
-            var camera = (TakesScreenshot)driver;
-            File screenShoot = camera.getScreenshotAs(OutputType.FILE);
-            System.out.println("The absolute path of the screenshot is: " +screenShoot.getAbsolutePath());
-            try {
-                Files.move(screenShoot.toPath(),new File("resources/screenshot/Test.png").toPath());
+                Files.move(screenShoot.toPath(),new File("resources/failedTestScreenshot/"+ result.getMethod().getMethodName() +".png").toPath());
             }
-            catch (IOException e){
-                e.printStackTrace();
-            }
+        else{
+            Files.move(screenShoot.toPath(), new File("resources/passedTestScreenshoot/"+ result.getMethod().getMethodName() +".png").toPath());
         }
+
+
+
     }
 
-     */
+
     @AfterClass
     public void tearDown(){
        // driver.quit();  //closes all the driver's session
@@ -113,12 +111,12 @@ public class BaseTests {
 
        Set<Cookie> cookieSet = driver.manage().getCookies();
         for(Cookie cookie : cookieSet){
-            System.out.println(cookie.getName());
+//            System.out.println(cookie.getName());
             if(cookie.getName().equalsIgnoreCase(cookieNameToDelete)){
                 driver.manage().deleteCookieNamed(cookieNameToDelete);
             }
-            System.out.println();
-            System.out.println(cookie.getName());
+//            System.out.println();
+//            System.out.println(cookie.getName());
         }
 
     }
