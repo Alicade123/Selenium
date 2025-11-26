@@ -67,7 +67,7 @@ public class BaseTests {
 //        driver.get("https://the-internet.herokuapp.com/");
 //    }
 
-      @AfterMethod
+//      @AfterMethod
     public void takeScreenShot(ITestResult result) throws IOException {
           var camera = (TakesScreenshot)driver;
           File screenShoot = camera.getScreenshotAs(OutputType.FILE);
