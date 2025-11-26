@@ -5,6 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Objects;
+
 import static javax.management.Query.value;
 
 public class HorizontalSlider {
@@ -16,12 +18,15 @@ public class HorizontalSlider {
         this.driver = driver;
     }
     public void SlideRight(int value){
-//        driver.findElement(slideBar).sendKeys(Keys.ARROW_RIGHT);
-        WebElement slider = driver.findElement(slideBar);
-        for (int i = 0; i < value; i++) {
-            slider.sendKeys(Keys.ARROW_RIGHT);
-        }
-
+        //        for (int i = 0; i < value; i++) {
+//          driver.findElement(sliderValue).sendKeys(Keys.ARROW_RIGHT);
+//        }
+        double x = Double.parseDouble(driver.findElement(sliderValue).getText());
+       double max = Double.parseDouble(driver.findElement(slideBar).getAttribute("max"));
+       while(x<max){
+           driver.findElement(slideBar).sendKeys(Keys.ARROW_RIGHT);
+           x+=1.5;
+       }
     }
 
 
