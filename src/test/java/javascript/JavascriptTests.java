@@ -1,5 +1,6 @@
 package javascript;
 import base.BaseTests;
+import org.openqa.selenium.Cookie;
 import org.testng.annotations.Test;
 import pages.LargeDeepDOMPage;
 
@@ -32,4 +33,5 @@ public class JavascriptTests extends BaseTests {
     assertTrue(selectedOptions.containsAll(optionsToSelect), "All options were not selected");
     assertEquals(selectedOptions.size(), optionsToSelect.size(), "Number of selected items");
 }
+
 }
