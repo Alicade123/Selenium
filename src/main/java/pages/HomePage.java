@@ -111,6 +111,11 @@ public class HomePage {
         return new NavigationDynamicLoadingPage(driver);
 
     }
+    //19. Click Checkboxes Link
+    public CheckboxesPage clickCheckboxes(){
+        clickLink("Checkboxes");
+        return new CheckboxesPage(driver);
+    }
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
     }
