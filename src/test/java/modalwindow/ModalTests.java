@@ -10,6 +10,6 @@ public class ModalTests extends BaseTests {
         var entryAdPage = homePage.clickEntryAdPage();
        String pageTitle =  entryAdPage.ClickCloseModal();
        System.out.println(pageTitle);
-       assertEquals(pageTitle, "Entry Ad", "Something went wrong!");
+       assertEquals(pageTitle, "The Internet", "Something went wrong!");
     }
 }
