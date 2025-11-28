@@ -25,6 +25,7 @@ public class HorizontalSlider {
        double max = Double.parseDouble(driver.findElement(slideBar).getAttribute("max"));
        while(x<max){
            driver.findElement(slideBar).sendKeys(Keys.ARROW_RIGHT);
+
            x+=1.5;
        }
     }
