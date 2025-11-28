@@ -72,15 +72,12 @@ public class BaseTests {
           var camera = (TakesScreenshot)driver;
           File screenShoot = camera.getScreenshotAs(OutputType.FILE);
           System.out.println("The absolute path of the screenshot is: " +screenShoot.getAbsolutePath());
-        if(ITestResult.FAILURE == result.getStatus()){
+        if(ITestResult.FAILURE == result.getStatus()){ //(SUCCESS, FAIL, SKIP)
                 Files.move(screenShoot.toPath(),new File("resources/failedTestScreenshot/"+ result.getMethod().getMethodName() +".png").toPath());
             }
         else{
             Files.move(screenShoot.toPath(), new File("resources/passedTestScreenshoot/"+ result.getMethod().getMethodName() +".png").toPath());
         }
-
-
-
     }
 
 
