@@ -22,9 +22,4 @@ public class ContextMenuPage {
     public void getAlertAccept(){
         driver.switchTo().alert().accept();
     }
-    /*
-
-
-
-     */
 }
