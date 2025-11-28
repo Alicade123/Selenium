@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.security.Key;
 
 public class NavigationDynamicLoadingPage {
     WebDriver driver;
