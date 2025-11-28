@@ -116,6 +116,15 @@ public class HomePage {
         clickLink("Checkboxes");
         return new CheckboxesPage(driver);
     }
+    //20. Click Basic Auth
+    public BasicAuthPage clickBasicAuth(){
+        driver.findElement(By.linkText("Basic Auth")).click();
+        String username = "admin";
+        String password = "password";
+        driver.get("https://" + username + ":" + password + "@the-internet.herokuapp.com/basic_auth");
+
+        return new BasicAuthPage(driver);
+    }
     private void clickLink(String linkText){
     driver.findElement(By.linkText(linkText)).click();
     }
