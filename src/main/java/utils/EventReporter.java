@@ -24,4 +24,6 @@ public class EventReporter implements WebDriverListener {
     public void afterGet(WebDriver driver, String url) {
 //        System.out.println("Finished navigating to: " + url);
     }
+
+
 }
